@@ -18,6 +18,13 @@ class DatabaseLogger implements LoggerInterface
         $this->conn = $conn;
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param string $message
+     * @param [type] $level
+     * @return void
+     */
     public function log(string $message, LogLevel $level=LogLevel::INFO)
     {
         try{
