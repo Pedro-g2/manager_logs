@@ -4,14 +4,11 @@ declare(strict_types=1);
 require __DIR__ . '/../vendor/autoload.php';
 
 use App\Enums\LogLevel;
-use App\Handlers\FileLogger;
-use App\Handlers\ConsoleLogger;
+use App\Handlers\LoggerManager;
 
-// Se o código rodar sem erro, significa que ele achou a Interface!
-$fileLogger = new FileLogger();
-$fileLogger->log('Testando ConsoleLogger', LogLevel::ERROR);
+$logger = LoggerManager::make('database');
 
-$consoleLogger = new ConsoleLogger();
-$consoleLogger->log('Testando ConsoleLogger', LogLevel::INFO);
+// $consoleLogger = new ConsoleLogger();
+$logger->log('Testando', LogLevel::INFO);
 
-echo "Sucesso! O Log foi gravado e mostrado com sucesso." . PHP_EOL;
+echo "Sucesso! Logado com sucesso." . PHP_EOL;
