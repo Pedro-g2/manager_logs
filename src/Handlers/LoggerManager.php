@@ -11,7 +11,7 @@ use App\Handlers\FileLogger;
 
 /**
  * Gerencia a criação de diferentes tipos de loggers.
- * * Esta classe implementa o padrão Static Factory para centralizar
+ * Esta classe implementa o padrão Static Factory para centralizar
  * a lógica de instanciação dos loggers do sistema.
  */
 class LoggerManager

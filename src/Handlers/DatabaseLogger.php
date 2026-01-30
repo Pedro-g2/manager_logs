@@ -9,6 +9,10 @@ use App\Interfaces\LoggerInterface;
 use PDO;
 use Throwable;
 
+/**
+ * Faz uma conexão com o banco de dados e persiste as mensagens de log
+ * Esta classe recebe uma injeção de depência via construtor: a conexão com o banco de dados
+ */
 class DatabaseLogger implements LoggerInterface
 {
     public PDO $conn;
@@ -19,19 +23,20 @@ class DatabaseLogger implements LoggerInterface
     }
 
     /**
-     * Undocumented function
+     * Salva uma mensagem de log no banco de dados
      *
-     * @param string $message
-     * @param [type] $level
+     * @param string $message A mensage de log a ser persistida no banco de dados
+     * @param LogLevel $level O nível de atenção que a mensagem exige ('INFO', 'WARNING', 'ERROR', 'DEBUG')
      * @return void
+     * @throws Throwable $e A exceção ser lançada no log do servidor HTTP ou exibida no terminal conforme configuração (php.ini)
      */
-    public function log(string $message, LogLevel $level=LogLevel::INFO)
+    public function log(string $message, LogLevel $level=LogLevel::INFO): void
     {
         try{
             $connection = $this->conn;
 
             $prepare = $connection->prepare('insert into logs(level, message) values(:level, :message)');
-            $countLines = $prepare->execute([
+            $prepare->execute([
                 'level' => $level->value,
                 'message' => $message,
             ]);
