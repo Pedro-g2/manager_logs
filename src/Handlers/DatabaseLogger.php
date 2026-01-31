@@ -32,7 +32,7 @@ class DatabaseLogger implements LoggerInterface
      */
     public function log(string $message, LogLevel $level=LogLevel::INFO): void
     {
-        try{
+        try {
             $connection = $this->conn;
 
             $prepare = $connection->prepare('insert into logs(level, message) values(:level, :message)');

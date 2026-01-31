@@ -46,7 +46,7 @@ class FileLogger implements LoggerInterface
 
         // Remove o nome do arquivo do caminho
         $dir = dirname($this->filePath);
-        if(!is_dir($dir)) {
+        if (!is_dir($dir)) {
             mkdir($dir, 0777, true);
         }
 

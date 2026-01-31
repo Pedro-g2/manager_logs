@@ -20,7 +20,7 @@ class Database
 
     private function __construct()
     {
-        throw new \Exception('Não permitido');
+        throw new Exception('Não permitido');
     }
 
     /**
@@ -46,7 +46,7 @@ class Database
 
         $dsn = "{$driver}:host={$host};dbname={$database};charset=utf8";
 
-        try{
+        try {
             self::$instance = new PDO($dsn, $username, $password);
             
             // configura o php para lançar as excessões de forma explícita
@@ -54,7 +54,7 @@ class Database
 
             return self::$instance;
 
-        }catch(Throwable $e)
+        } catch (Throwable $e)
         {
             throw new Exception('Erro ao se conectar ao banco de dados: ', 0, $e);
         }

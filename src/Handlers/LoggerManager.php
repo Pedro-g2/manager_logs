@@ -25,7 +25,7 @@ class LoggerManager
      */
     public static function make(string $type): LoggerInterface
     {
-        switch($type){
+        switch ($type) {
             case 'console':
                 return new ConsoleLogger();
             case 'file':
