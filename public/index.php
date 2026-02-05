@@ -38,10 +38,6 @@ try {
     
     // passando a mensagem de log
     $logger->log('Testando - 01', LogLevel::DEBUG);
-    
-    if ($logOption == '3' || $logOption == '2') {
-        echo 'Salvo com sucesso'.PHP_EOL;
-    }
 
 } catch(Throwable $e) {
     echo 'Erro: ' . $e->getMessage() . PHP_EOL;
